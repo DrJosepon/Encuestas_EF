@@ -32,7 +32,9 @@
 
                         <td ng-repeat="alternativas in alternativasDatos" ng-if="alternativas.Cod_Pregunta == preguntas.Cod_Pregunta ">
                             {{alternativas.Des_Alternativa}}
-                            <input type="radio" ng-model="items.Cod_Area" ng-value="alternativas.Cod_Alternativa">
+                            <input type="text" class="form-control" data-ng-model="Respuesta.Cod_Area">
+                            <input type="radio" ng-click="anadir()" ng-model="items.Cod_Area" ng-value="alternativas.Cod_Alternativa">
+                            <button data-ng-click="anadir()">Update</button>
                         </td>
 
 
