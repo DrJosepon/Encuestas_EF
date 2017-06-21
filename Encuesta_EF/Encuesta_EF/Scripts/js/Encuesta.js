@@ -48,11 +48,14 @@ app.controller('encuestaCtrl', function ($scope, $http, EncuestasServicio) {
         Cod_Area: '',
     };
 
-    var Respuestas = [];
+    $scope.Respuestas = [];
     
-    $scope.anadir = function () {
+    $scope.anadir = function (data, area) {
+        debugger;
         var obj = new Object();
-        obj.Cod_Area = $scope.Respuesta.Cod_Area;
+        obj.Cod_Area = area;
+        obj.Cod_Alternativa = data.Cod_Alternativa;
+        $scope.Respuestas.push(obj);
     }
 
     //Add New Item
