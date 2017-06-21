@@ -1,7 +1,47 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Encuesta";
 }
 
 <h2>Encuesta</h2>
 
+@section scripts {
+
+<script src="~/Scripts/js/Encuesta.js"></script>
+}
+<div ng-app="encuestaModulo" id="body">
+    <div ng-controller="encuestaCtrl">
+
+        <div ng-repeat="preguntas in preguntasDatos">
+            <h4>{{preguntas.Des_Pregunta}}</h4>
+            <table class="table table-striped" ng-cloak>
+                <thead>
+                    <tr>
+                        <th style="display: none;">ID</th>
+                        <th>Descripcion</th>
+                        <th>Excelente</th>
+                        <th>Bueno</th>
+                        <th>Regular</th>
+                        <th>Malo</th>
+                        <th>Pésimo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="items in areas">
+                        <td hidden="hidden">{{items.Cod_Area}}</td>
+                        <td>{{items.Descripcion}}</td>
+
+                        <td ng-repeat="alternativas in alternativasDatos" ng-if="alternativas.Cod_Pregunta == preguntas.Cod_Pregunta ">
+                            {{alternativas.Des_Alternativa}}
+                            <input type="radio" ng-model="items.Cod_Area" ng-value="alternativas.Cod_Alternativa">
+                        </td>
+
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+
+  
+    </div>
+</div>
